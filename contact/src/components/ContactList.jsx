@@ -1,5 +1,5 @@
 function ContactList(props) {
-  const contacts = props.contacts;
+  const { onContactClick, contacts } = props;
   const style = {
     height: "35px",
     borderRadius: "50%",
@@ -10,6 +10,7 @@ function ContactList(props) {
       <ul className="list-group">
         {contacts.map((contact, index) => (
           <li
+            onClick={() => onContactClick(contact)}
             className="list-group-item"
             key={index}
             style={{ cursor: "pointer" }}
