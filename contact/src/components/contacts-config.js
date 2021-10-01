@@ -11,6 +11,9 @@ const fakeContacts = new Array(5).fill({}).map((el) => {
   };
 });
 
+const Input = (props) => <input {...props}></input>;
+const TextArea = (props) => <textarea {...props}></textarea>;
+
 const formInputs = [
   {
     label: "First Name",
@@ -18,40 +21,41 @@ const formInputs = [
 
     type: "text",
     tag: "input",
+    tag: Input,
   },
   {
     label: "Last Name",
     name: "lastName",
     type: "text",
-    tag: "input",
+    tag: Input,
   },
   {
     label: "Nick Name",
     name: "nickName",
 
     type: "text",
-    tag: "input",
+    tag: Input,
   },
   {
     label: "Email Address",
     name: "email",
 
     type: "email",
-    tag: "input",
+    tag: Input,
   },
   {
     label: "Phone Number",
     name: "phone",
 
     type: "text",
-    tag: "input",
+    tag: Input,
   },
   {
     label: "Address",
     name: "address",
 
     type: "textarea",
-    tag: "textarea",
+    tag: TextArea,
   },
 ];
 

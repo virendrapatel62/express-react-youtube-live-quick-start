@@ -21,34 +21,6 @@ function ContactForm(props) {
     });
   };
 
-  const createInputField = (input) => {
-    return (
-      <input
-        onChange={handleOnChange}
-        type={input.type}
-        className="form-control"
-        name={input.name}
-        value={formData[input.name]}
-      />
-    );
-  };
-
-  const createTextArea = (input) => {
-    return (
-      <textarea
-        onChange={handleOnChange}
-        className="form-control"
-        name={input.name}
-        value={formData[input.name]}
-      ></textarea>
-    );
-  };
-
-  const renderedOfInput = {
-    input: createInputField,
-    textarea: createTextArea,
-  };
-
   const saveContact = (event) => {
     event.preventDefault();
 
@@ -63,7 +35,12 @@ function ContactForm(props) {
         {formInputs.map((input, index) => (
           <div className="mb-3" key={index}>
             <label className="form-label">{input.label}</label>
-            {renderedOfInput[input.tag](input)}
+            <input.tag
+              onChange={handleOnChange}
+              className="form-control"
+              name={input.name}
+              value={formData[input.name]}
+            />
           </div>
         ))}
 
