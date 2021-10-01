@@ -15,7 +15,6 @@ const formInputs = [
   {
     label: "First Name",
     name: "firstName",
-
     type: "text",
     tag: "input",
   },
@@ -28,28 +27,24 @@ const formInputs = [
   {
     label: "Nick Name",
     name: "nickName",
-
     type: "text",
     tag: "input",
   },
   {
     label: "Email Address",
     name: "email",
-
     type: "email",
     tag: "input",
   },
   {
     label: "Phone Number",
     name: "phone",
-
     type: "text",
     tag: "input",
   },
   {
     label: "Address",
     name: "address",
-
     type: "textarea",
     tag: "textarea",
   },
