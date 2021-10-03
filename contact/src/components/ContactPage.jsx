@@ -11,22 +11,30 @@ import { ContactList } from "./ContactList";
 import { fakeContacts } from "./contacts-config";
 
 function ContactPage() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(fakeContacts);
   const [selectedContact, setSelectedContact] = useState(null);
 
   const history = useHistory();
 
   useEffect(() => {
-    console.log("contacts changed....", contacts);
-    if (contacts.length) {
-      saveContactsToLocalStorage(contacts);
-    } else {
-      setContacts(getContacts());
-    }
+    console.log("contacts changed....", contacts.length);
+
+    saveContactsToLocalStorage(contacts);
   }, [contacts]);
+
+  useEffect(() => {
+    setContacts(getContacts());
+  }, []);
 
   const saveContact = (contact) => {
     setContacts([...contacts, contact]);
+  };
+
+  const deleteContact = (contact, index) => {
+    console.log({ contact, index });
+    const copy = [...contacts];
+    copy.splice(index, 1);
+    setContacts(copy);
   };
   const handleContactClick = (contact) => {
     console.log("Clicked on ", contact);
@@ -53,14 +61,6 @@ function ContactPage() {
             <ContactForm onSave={saveContact} />
           </div>
         </Route>
-        <Route path={["/list", "/"]}>
-          <div className="col rounded p-3 m-1">
-            <ContactList
-              onContactClick={handleContactClick}
-              contacts={contacts}
-            />
-          </div>
-        </Route>
 
         <Route path="/details">
           <div className="card col-8 mx-auto">
@@ -81,6 +81,16 @@ function ContactPage() {
                 Go somewhere
               </a>
             </div>
+          </div>
+        </Route>
+
+        <Route path={["/list", "/"]}>
+          <div className="col rounded p-3 m-1">
+            <ContactList
+              onContactClick={handleContactClick}
+              contacts={contacts}
+              onDelete={deleteContact}
+            />
           </div>
         </Route>
       </Switch>

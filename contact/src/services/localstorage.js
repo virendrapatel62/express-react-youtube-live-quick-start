@@ -7,7 +7,7 @@ function saveContacts(contacts) {
 function getContacts() {
   try {
     const raw = localStorage.getItem(contactKey);
-    return JSON.parse(raw);
+    return JSON.parse(raw) || [];
   } catch (err) {
     console.error("Parsing error");
     return [];
