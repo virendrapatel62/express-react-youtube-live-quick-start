@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Navbar } from "./components/Navbar";
+import { TodoList } from "./components/TodoList";
+import { BrowserRouter, Route } from "react-router-dom";
+import { TodoDetails } from "./components/TodoDetails";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar></Navbar>
+      <div className="container">
+        <br></br>
+        <h1 className="text-center">Todo App With Axios</h1>
+
+        <Route path="/todos/:id">
+          <TodoDetails></TodoDetails>
+        </Route>
+        <Route path="/" exact={true}>
+          <TodoList></TodoList>
+        </Route>
+      </div>
+    </BrowserRouter>
   );
 }
 
